@@ -1,0 +1,202 @@
+# MirageSubscription — сообщения и тексты меню.
+# Основной цвет: &f   Выделение: &#00ACFF   Скобки: « » ‹ › ⌈ ⌋
+# Подстановки вида {name} обрабатываются плагином; {prefix} — значение ключа prefix.
+prefix: "&#00ACFF‹ Premium › &f"
+loading: "{prefix}Плагин ещё загружает данные, попробуйте через несколько секунд."
+no-permission: "{prefix}У вас недостаточно прав."
+player-only: "{prefix}Эта команда доступна только игрокам."
+gui-disabled: "{prefix}Меню отключено. Используйте &#00ACFF/premium help&f."
+
+plan:
+  custom: "&#00ACFFОсобая"
+
+time:
+  days: "д"
+  hours: "ч"
+  minutes: "м"
+  seconds: "с"
+
+help:
+  player:
+    - "&#00ACFF⌈ Premium ⌋ &fкоманды:"
+    - " &#00ACFF/premium &f— открыть меню"
+    - " &#00ACFF/premium status &f— статус подписки"
+    - " &#00ACFF/premium plans &f— список тарифов"
+    - " &#00ACFF/premium buy «тариф» «points|rub» &f— купить подписку"
+    - " &#00ACFF/premium bonuses &f— список бонусов"
+    - " &#00ACFF/premium claim «бонус» &f— забрать бонус"
+  admin:
+    - "&#00ACFF⌈ Premium Admin ⌋ &fкоманды:"
+    - " &#00ACFF/msub give «игрок» «тариф|дни» &f— выдать подписку"
+    - " &#00ACFF/msub take «игрок» «дни» &f— уменьшить срок"
+    - " &#00ACFF/msub revoke «игрок» &f— отменить подписку"
+    - " &#00ACFF/msub check «игрок» &f— информация об игроке"
+    - " &#00ACFF/msub rub «add|take|set|balance» «игрок» «сумма» &f— рублёвый баланс"
+    - " &#00ACFF/msub bonus &f— редактор бонусов"
+    - " &#00ACFF/msub reload &f— перезагрузить конфиги"
+  admin-bonus:
+    - "&#00ACFF⌈ Бонусы ⌋ &fредактор:"
+    - " &#00ACFF/msub bonus list &f| &#00ACFFinfo «id» &f| &#00ACFFcreate «id» «тип» &f| &#00ACFFdelete «id»"
+    - " &#00ACFF/msub bonus setname «id» «название» &f| &#00ACFFseticon «id» [предмет]"
+    - " &#00ACFF/msub bonus settype «id» «ACTIVATE|DAILY|PASSIVE» &f| &#00ACFFsetcooldown «id» «часы»"
+    - " &#00ACFF/msub bonus addlore «id» «текст» &f| &#00ACFFclearlore «id»"
+    - " &#00ACFF/msub bonus addcmd «id» «команда» &f| &#00ACFFdelcmd «id» «номер»"
+    - " &#00ACFF/msub bonus addrevert «id» «команда» &f| &#00ACFFdelrevert «id» «номер»"
+
+status:
+  active:
+    - "{prefix}Подписка ⌈&#00ACFF{plan}&f⌋ активна"
+    - "{prefix}Осталось: «&#00ACFF{left}&f» &8(до {expires})"
+  inactive:
+    - "{prefix}У вас нет премиум подписки. Тарифы: &#00ACFF/premium plans"
+
+plans:
+  header: "{prefix}Доступные тарифы:"
+  line: " ‹&#00ACFF{id}&f› {name} &f— &#00ACFF{days} дн.&f | {points} | {rubles}"
+
+buy:
+  usage: "{prefix}Использование: &#00ACFF/premium buy «тариф» «points|rub»"
+  unknown-plan: "{prefix}Такого тарифа нет. Список: &#00ACFF/premium plans"
+  unknown-currency: "{prefix}Неизвестная валюта. Доступно: &#00ACFFpoints&f, &#00ACFFrub"
+  success: "{prefix}Вы приобрели {plan}&f на «&#00ACFF{days} дн.&f» за &#00ACFF{price}&f!"
+  insufficient-points: "{prefix}Недостаточно поинтов. Нужно: &#00ACFF{price}"
+  insufficient-rubles: "{prefix}Недостаточно рублей на балансе. Нужно: &#00ACFF{price}"
+  store-link: "{prefix}Пополнить баланс: &#00ACFF{url} &8(нажмите)"
+  busy: "{prefix}Предыдущая покупка ещё обрабатывается."
+  currency-disabled: "{prefix}Оплата этой валютой сейчас недоступна."
+  price-unavailable: "{prefix}Этот тариф нельзя оплатить выбранной валютой."
+  error: "{prefix}Произошла ошибка при покупке. Средства не списаны или возвращены, обратитесь к администрации."
+
+bonuses:
+  header: "{prefix}Бонусы подписки:"
+  line: " ‹&#00ACFF{id}&f› {name} &f— {state}"
+  usage: "{prefix}Использование: &#00ACFF/premium claim «бонус»"
+  not-found: "{prefix}Такого бонуса нет."
+  claimed: "{prefix}Вы получили бонус {bonus}&f!"
+  cooldown: "{prefix}Бонус будет доступен через «&#00ACFF{left}&f»."
+  no-subscription: "{prefix}Для получения бонусов нужна активная подписка."
+  not-claimable: "{prefix}Этот бонус выдаётся автоматически."
+  state:
+    ready: "&#00ACFFдоступен"
+    cooldown: "через {left}"
+    need-subscription: "&7нужна подписка"
+    auto: "&7автоматически"
+
+expire:
+  soon: "{prefix}Ваша подписка скоро закончится, осталось: «&#00ACFF{left}&f». Продлить: &#00ACFF/premium"
+  expired: "{prefix}Ваша премиум подписка закончилась. Оформить новую: &#00ACFF/premium"
+
+admin:
+  reloaded: "{prefix}Конфигурация перезагружена."
+  reload-failed: "{prefix}Не удалось перезагрузить конфигурацию, подробности в консоли."
+  player-not-found: "{prefix}Игрок «&#00ACFF{player}&f» не найден (он должен был хотя бы раз зайти на сервер)."
+  usage:
+    give: "{prefix}Использование: &#00ACFF/msub give «игрок» «тариф|дни»"
+    take: "{prefix}Использование: &#00ACFF/msub take «игрок» «дни»"
+    revoke: "{prefix}Использование: &#00ACFF/msub revoke «игрок»"
+    check: "{prefix}Использование: &#00ACFF/msub check «игрок»"
+    rub: "{prefix}Использование: &#00ACFF/msub rub «add|take|set» «игрок» «сумма»&f или &#00ACFF/msub rub balance «игрок»"
+  given: "{prefix}Игроку «&#00ACFF{player}&f» выдана подписка на &#00ACFF{days} дн."
+  given-notify: "{prefix}Вам выдана премиум подписка на «&#00ACFF{days} дн.&f»!"
+  taken: "{prefix}У игрока «&#00ACFF{player}&f» уменьшен срок на &#00ACFF{days} дн."
+  revoked: "{prefix}Подписка игрока «&#00ACFF{player}&f» отменена."
+  no-subscription: "{prefix}У игрока «&#00ACFF{player}&f» нет активной подписки."
+  check-active: "{prefix}«&#00ACFF{player}&f»: {plan}&f, осталось &#00ACFF{left}&f (до {expires}), рублей: &#00ACFF{rubles}"
+  check-inactive: "{prefix}«&#00ACFF{player}&f»: подписки нет, рублей: &#00ACFF{rubles}"
+  rub-balance: "{prefix}Баланс «&#00ACFF{player}&f»: &#00ACFF{amount}₽"
+  rub-changed: "{prefix}Баланс «&#00ACFF{player}&f» изменён, теперь: &#00ACFF{amount}₽"
+  rub-received: "{prefix}Ваш баланс пополнен на &#00ACFF{amount}₽&f! Купить подписку: &#00ACFF/premium"
+  bonus:
+    list-header: "{prefix}Бонусы:"
+    list-line: " ‹&#00ACFF{id}&f› {name} &8[{type}]"
+    not-found: "{prefix}Бонус «&#00ACFF{id}&f» не найден."
+    exists: "{prefix}Бонус «&#00ACFF{id}&f» уже существует."
+    bad-id: "{prefix}Id бонуса: латиница, цифры, «_» и «-», до 32 символов."
+    bad-icon: "{prefix}Укажите предмет или возьмите его в руку."
+    created: "{prefix}Бонус «&#00ACFF{id}&f» создан (тип &#00ACFF{type}&f). Добавьте команды: &#00ACFF/msub bonus addcmd {id} «команда»"
+    deleted: "{prefix}Бонус «&#00ACFF{id}&f» удалён."
+    updated: "{prefix}Бонус «&#00ACFF{id}&f» обновлён."
+    info-head: "{prefix}«&#00ACFF{id}&f» {name} &8| &f{type} &8| &f{icon} &8| &fкулдаун {cooldown} ч"
+    info-cmd: " &#00ACFF{n}. &f{cmd}"
+    info-revert: " &#00ACFF{n}. &7(откат) &f{cmd}"
+
+gui:
+  unavailable: "&7недоступно"
+  main:
+    title: "&f« &#00ACFFPremium &f»"
+    status:
+      active:
+        name: "&f‹ &#00ACFFПодписка активна &f›"
+        lore:
+          - ""
+          - "&fТариф: «&#00ACFF{plan}&f»"
+          - "&fОсталось: «&#00ACFF{left}&f»"
+          - "&fДо: &#00ACFF{expires}"
+          - ""
+          - "&7Выберите тариф ниже, чтобы продлить"
+      inactive:
+        name: "&f‹ &#00ACFFПодписки нет &f›"
+        lore:
+          - ""
+          - "&fОформите премиум подписку"
+          - "&fи получите &#00ACFFбонусы&f!"
+    plan-lore:
+      - ""
+      - "&fСрок: «&#00ACFF{days} дн.&f»"
+      - "&fЦена: &#00ACFF{points} &fили &#00ACFF{rubles}"
+      - ""
+      - "&#00ACFF▶ &fНажмите для оплаты"
+    bonuses:
+      name: "&f‹ &#00ACFFБонусы подписки &f›"
+      lore:
+        - ""
+        - "&fСписок бонусов и ежедневные награды"
+        - ""
+        - "&#00ACFF▶ &fНажмите, чтобы открыть"
+    close: "&f‹ &#00ACFFЗакрыть &f›"
+  payment:
+    title: "&f‹ &#00ACFFОплата &f›"
+    info-lore:
+      - ""
+      - "&fСрок: «&#00ACFF{days} дн.&f»"
+      - "&fВыберите способ оплаты"
+    points:
+      name: "&f‹ &#00ACFFОплатить поинтами &f›"
+      lore:
+        - ""
+        - "&fЦена: &#00ACFF{price}"
+        - "&fВаш баланс: &#00ACFF{balance}"
+        - ""
+        - "&#00ACFF▶ &fНажмите для покупки"
+    rubles:
+      name: "&f‹ &#00ACFFОплатить рублями &f›"
+      lore:
+        - ""
+        - "&fЦена: &#00ACFF{price}"
+        - "&fВаш баланс: &#00ACFF{balance}"
+        - ""
+        - "&#00ACFF▶ &fНажмите для покупки"
+    unavailable:
+      name: "&f‹ &#00ACFFНедоступно &f›"
+      lore:
+        - ""
+        - "&fЭтот способ оплаты сейчас недоступен"
+    balance-loading: "..."
+    back: "&f‹ &#00ACFFНазад &f›"
+  bonuses:
+    title: "&f‹ &#00ACFFБонусы подписки &f›"
+    type:
+      activate:
+        - ""
+        - "&fВыдаётся при &#00ACFFкаждой покупке"
+      passive:
+        - ""
+        - "&fДействует &#00ACFFпока активна подписка"
+      daily:
+        - ""
+        - "&fМожно забирать &#00ACFFпо кулдауну"
+    state:
+      ready: "&#00ACFF▶ &fНажмите, чтобы забрать"
+      cooldown: "&fДоступен через: «&#00ACFF{left}&f»"
+      need-subscription: "&7Нужна активная подписка"
+    back: "&f‹ &#00ACFFНазад &f›"

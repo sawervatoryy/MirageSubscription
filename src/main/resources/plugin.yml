@@ -1,0 +1,31 @@
+name: MirageSubscription
+version: '${project.version}'
+main: org.github.sawervatoryy.mirageSubscription.MirageSubscription
+api-version: '1.21'
+load: POSTWORLD
+authors: [sawervatoryy]
+description: Премиум подписка за PlayerPoints или рубли с анимированным меню, бонусами и плейсхолдерами
+softdepend: [PlayerPoints, PlaceholderAPI, TAB]
+
+# Внешние библиотеки не нужны (Adventure/Bukkit идут в составе Paper).
+# Если понадобятся — подключать так, без шейда:
+# libraries:
+#   - group:artifact:version
+
+commands:
+  premium:
+    description: Премиум подписка
+    aliases: [premuim, prem]
+    usage: /<command> [help]
+  msub:
+    description: Администрирование MirageSubscription
+    aliases: [mirsub, subadmin]
+    usage: /<command> help
+
+permissions:
+  miragesubscription.use:
+    description: Пользоваться командой /premium
+    default: true
+  miragesubscription.admin:
+    description: Администрирование подписок, бонусов и рублёвого баланса
+    default: op

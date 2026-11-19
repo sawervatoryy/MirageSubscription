@@ -1,0 +1,36 @@
+# MirageSubscription — бонусы подписки.
+# Файл можно править руками (затем /msub reload) или командами /msub bonus ...
+# type: ACTIVATE (при каждой покупке) | DAILY (забирается вручную по кулдауну) | PASSIVE (команды при старте и revert-commands при окончании)
+# В командах доступен плейсхолдер %player%.
+bonuses:
+  welcome:
+    name: "&f‹ &#00ACFFПриветственный набор &f›"
+    icon: ENDER_CHEST
+    type: ACTIVATE
+    cooldown-hours: 24.0
+    lore:
+      - "&fВыдаётся при каждой покупке подписки"
+    commands:
+      - "give %player% diamond 5"
+    revert-commands: []
+  daily-reward:
+    name: "&f‹ &#00ACFFЕжедневная награда &f›"
+    icon: GOLDEN_APPLE
+    type: DAILY
+    cooldown-hours: 24.0
+    lore:
+      - "&fЗабирайте каждые &#00ACFF24 часа"
+    commands:
+      - "give %player% golden_apple 4"
+    revert-commands: []
+  premium-group:
+    name: "&f‹ &#00ACFFГруппа Premium &f›"
+    icon: NAME_TAG
+    type: PASSIVE
+    cooldown-hours: 24.0
+    lore:
+      - "&fПрефикс и права на время подписки"
+    commands:
+      - "lp user %player% parent add premium"
+    revert-commands:
+      - "lp user %player% parent remove premium"

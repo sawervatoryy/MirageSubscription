@@ -1,0 +1,101 @@
+# ╔══════════════════════════════════════════════════════════╗
+# ║  MirageSubscription v0.1 — премиум подписка               ║
+# ║  Основной цвет: &f   Выделение: &#00ACFF                  ║
+# ╚══════════════════════════════════════════════════════════╝
+# Все сообщения и тексты меню — в lang.yml, бонусы — в bonuses.yml (или командами /msub bonus ...).
+# После правок: /msub reload
+
+settings:
+  # Как часто (сек) проверять окончание подписок
+  expiry-check-seconds: 30
+  # За сколько дней до конца предупреждать игрока при входе (0 — не предупреждать)
+  notify-before-days: 3
+  # Как часто (сек) сохранять data.yml (сохранение асинхронное)
+  save-interval-seconds: 60
+  # Формат даты в меню, сообщениях и плейсхолдере %miragesub_expires%
+  date-format: "dd.MM.yyyy HH:mm"
+
+gui:
+  # false — меню отключено, но /premium status|plans|buy|bonuses|claim продолжают работать
+  enabled: true
+  animation:
+    # Анимация открытия (предметы расходятся от центра) и бегущая волна по рамке
+    enabled: true
+    open-step-ticks: 2
+    # Скорость волны по рамке; 0 — выключить idle-анимацию
+    idle-step-ticks: 4
+    # Цвета рамки, по ним бежит волна
+    palette:
+      - WHITE_STAINED_GLASS_PANE
+      - LIGHT_BLUE_STAINED_GLASS_PANE
+      - CYAN_STAINED_GLASS_PANE
+      - LIGHT_BLUE_STAINED_GLASS_PANE
+  sounds:
+    enabled: true
+    open: "block.ender_chest.open"
+    step: "block.note_block.chime"
+    click: "ui.button.click"
+    success: "entity.player.levelup"
+    error: "entity.villager.no"
+  icons:
+    status-active: NETHER_STAR
+    status-inactive: COAL
+    bonuses: CHEST
+    close: BARRIER
+    back: ARROW
+    points: AMETHYST_SHARD
+    rubles: EMERALD
+    unavailable: RED_STAINED_GLASS_PANE
+
+currencies:
+  # Донат-валюта: требуется плагин PlayerPoints
+  points:
+    enabled: true
+    name: "поинтов"
+  # Рубли: внутренний баланс плагина. Пополняется командой из консоли после оплаты в донат-магазине:
+  #   msub rub add <игрок> <сумма>
+  rubles:
+    enabled: true
+    name: "руб."
+    symbol: "₽"
+    # Ссылка, которую игрок получит при нехватке рублей (пусто — не показывать)
+    store-url: "https://example.com/shop"
+
+# Тарифы. price.points / price.rubles: -1 (или 0) — оплата этой валютой недоступна.
+plans:
+  week:
+    name: "&f‹ &#00ACFFНеделя &f›"
+    days: 7
+    icon: IRON_INGOT
+    slot: 20
+    price:
+      points: 150
+      rubles: 99
+    lore: []
+  month:
+    name: "&f‹ &#00ACFFМесяц &f›"
+    days: 30
+    icon: GOLD_INGOT
+    slot: 22
+    price:
+      points: 450
+      rubles: 299
+    lore:
+      - "&fВыгоднее недели на &#00ACFF25%"
+  season:
+    name: "&f‹ &#00ACFFСезон &f›"
+    days: 90
+    icon: DIAMOND
+    slot: 24
+    price:
+      points: 1100
+      rubles: 749
+    lore:
+      - "&fВыгоднее недели на &#00ACFF40%"
+
+# Значения плейсхолдеров для TAB/scoreboard (цвета: &f, &#RRGGBB)
+placeholders:
+  active: "&#00ACFFPremium"
+  inactive: "&7Нет"
+  # Что выводить в %miragesub_timeleft% / %miragesub_expires% / %miragesub_plan%, если подписки нет
+  none: "&7-"
